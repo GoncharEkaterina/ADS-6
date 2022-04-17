@@ -4,22 +4,23 @@
 
 template<typename T, int size>
 class TPQueue {
-private:
-  T *arr;
-  int head, tail;
-public:
-  TPQueue() : head(0), tail(0) {}
-  T pop() {
-    return (arr[(head++) % size]);
-  }
-  void push(T value) {
-    bool check = true;
-    while (check) {
-      if ((head <= tail) && (value.prior > arr[(tail++) % size].prior)) arr[(tail + 2) % size] = arr[(tail++) % size];
-      else { check = false; }
-    }
-    arr[(tail + 2) % size] = value;
-  }
+ private:
+     T *arr;
+     int head, tail;
+ public:
+     TPQueue() : head(0), tail(0) { }
+     T pop() {
+       return (arr[(head++) % size]);
+     }
+     void push(T value) {
+       bool check = true;
+       while (check) {
+         if ((head <= tail) && (value.prior > arr[(tail++) % size].prior)) {
+         arr[(tail + 2) % size] = arr[(tail++) % size];
+         } else { check = false; }
+       }
+       arr[(tail + 2) % size] = value;
+     }
 };
 
 struct SYM {
