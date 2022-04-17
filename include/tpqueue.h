@@ -7,18 +7,20 @@ class TPQueue {
 private:
   T *arr;
   int head, tail;
-  int count;
 public:
-  TPQueue (int = 100);
-  ~TPQueue;
-  void push(const T &);
-  T pop();
-  T get() const;
-  bool isEmpty() const, isFull() const;
+  TPQueue() : head(0), tail(0) {}
+  T pop() {
+    return (arr[(head++) % size]);
+  }
+  void push(T value) {
+    bool check = true;
+    while (check) {
+      if ((head <= tail) && (value.prior > arr[(tail++) % size].prior)) arr[(tail + 2) % size] = arr[(tail++) % size];
+      else { check = false; }
+    }
+    arr[(tail + 2) % size] = value;
+  }
 };
-
-template <typename T>
-
 
 struct SYM {
   char ch;
