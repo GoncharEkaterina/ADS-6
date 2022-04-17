@@ -14,12 +14,13 @@ class TPQueue {
      }
      void push(T value) {
        bool check = true;
+       int variable = tail++;
        while (check) {
-         if ((head <= tail) && (value.prior > arr[(tail++) % size].prior)) {
-         arr[(tail + 2) % size] = arr[(tail++) % size];
+         if ((head <= variable--) && (value.prior > arr[variable % size].prior)) {
+         arr[(variable++) % size] = arr[variable % size];
          } else { check = false; }
        }
-       arr[(tail + 2) % size] = value;
+       arr[(variable++) % size] = value;
      }
 };
 
