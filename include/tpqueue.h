@@ -16,11 +16,11 @@ class TPQueue {
        bool check = true;
        int Var = tail++;
        while (check) {
-         if ((head <= Var--) && (value.prior > arr[Var % size].prior)) {
-         arr[(Var++) % size] = arr[Var % size];
+         if ((head <= --Var) && (value.prior > arr[Var % size].prior)) {
+         arr[(Var + 1) % size] = arr[Var % size];
          } else { check = false; }
        }
-       arr[(Var++) % size] = value;
+       arr[(Var + 1) % size] = value;
      }
 };
 
